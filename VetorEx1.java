@@ -1,31 +1,34 @@
 /* Implemente uma função que recebe por parâmetro um vetor de números inteiros
 e a quantidade de elementos do mesmo e informe a posição do maior número.*/
-
-package VetorMatriz;
 import java.util.Scanner;
-public class VetorEx1 {
-    public static void main(String[] args) {
 
+public class Praticar2 {
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Digite o tamanho do vetor: ");
-        int tamanho = scan.nextInt();
-        int[] vet = new int[tamanho];
-        for (int i = 0; i < tamanho; i++) {
-            System.out.println("Digite os numeros: ");
-            int num = scan.nextInt();
-            vet [i] = num;
+
+        System.out.println("Digite a quantidade de elementos: ");
+        int elementos = scan.nextInt();
+        int[] number = new int[elementos];
+        for (int contador = 0; contador < number.length; contador++) {
+            System.out.println("Digite um numero: ");
+            number[contador] = scan.nextInt();
         }
-        VerificaMaior(vet);
+        int position=modulo(number, elementos);
+        System.out.println("A posição do maior numero é: " +position);
     }
-    public static int VerificaMaior(int[] tamanho) {
-        int x = 0;
-        int i;
-        for (i = 0; i < tamanho.length; i++) {
-            if (x < tamanho[i]) {
-                x = tamanho[i];
+    public static int modulo(int[] number, int qntd) {
+        if (qntd==0){
+            return 0;
+        }
+        int MaiorNumero = 0;
+        int Position=0;
+        for (int contador = 0; contador < number.length; contador++) {
+            if (MaiorNumero < number[contador]) {
+                MaiorNumero = number[contador];
+                Position = contador;
             }
         }
-        System.out.println("Maior numero digitado foi: " + x + " posição " +(i-1));
-        return x;
+        System.out.println("Maior numero digitado foi: " + MaiorNumero + " na posição: " + (Position+1));
+        return qntd;
     }
 }
